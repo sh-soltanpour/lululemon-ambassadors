@@ -4,4 +4,5 @@ with open('./result-2.json') as f:
 
 for record in data:
     if 'followers' in record:
-        print(len(record['followers']))
+        print(record['instagram'], len(record['followers']))
+        print("----------")

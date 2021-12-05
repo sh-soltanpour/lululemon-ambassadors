@@ -2,7 +2,6 @@ import json
 import requests
 import time
 
-
 with open('./result.json') as f:
     data = json.load(f)
 
@@ -27,12 +26,12 @@ for record in data:
     if 'id' not in record:
         continue
     user_id = record['id']
-
     response = requests.get(f'https://i.instagram.com/api/v1/friendships/{user_id}/followers/', headers=headers,
                             params=params)
     print(response)
-    if (response.status_code == 200):
-        record['followers'] = response.json()['users']
+    if response.status_code == 200:
+        all_followers = record.get('followers', []) + list(response.json()['users'])
+        record['followers'] = list({v['pk']: v for v in all_followers}.values())
     time.sleep(1)
 
 with open('./result-2.json', 'w') as outfile:
