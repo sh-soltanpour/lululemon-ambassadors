@@ -1,5 +1,5 @@
 import json
-with open('./result-2.json') as f:
+with open('./uk_ambassadors.json') as f:
     data = json.load(f)
 
 for record in data:

@@ -34,10 +34,14 @@ for record in data:
         ('__a', '1'),
     )
     username = record['instagram']
+    print(f"Username: {username}")
     response = requests.get(f'https://www.instagram.com/{username}/', headers=headers, params=params)
     print(response)
     if response.status_code == 200:
-        record['id'] = response.json()['graphql']['user']['id']
+        record_id = response.json().get('graphql',{}).get('user',{}).get('id')
+        if record_id is None:
+            continue
+        record['id'] = record_id
     else:
         continue
 
