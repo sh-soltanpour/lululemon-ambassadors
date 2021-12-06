@@ -14,15 +14,10 @@ def extract(path: str) -> Dict[str, List[Dict]]:
     area_list = os.listdir(path)
     areas = {}
     for area in area_list:
-        ambassadors = json.load(open(f'{path}/{area}/{AMBASSADORS_LIST}'))
+        ambassadors = json.load(open(f"{path}/{area}"))
         for ambassador in ambassadors:
-            followers_file_path = f'{path}/{area}/followers/{ambassador["instagram"]}.json'
-            try:
-                with open(followers_file_path, 'r') as file:
-                    followers = json.load(file)
-                ambassador['followers'] = followers
-            except:
-                continue
+            followers_usernames = list(map(lambda x: x['username'], ambassador.get('followers', [])))
+            ambassador['followers'] = followers_usernames
         areas[area] = ambassadors
     return areas
 
@@ -107,7 +102,7 @@ def degree_distribution(g: nx.DiGraph):
     plt.show()
 
 
-areas = extract('data')
-graph = build_network(areas['EUROPE'])
+areas = extract('./ambassadors_lists')
+graph = build_network(areas['asia_1_ambassadors.json'])
 degree_distribution(graph)
-nx.write_gexf(graph, 'vis/visualized.gexf')
+nx.write_gexf(graph, './network/vis/visualized.gexf')
