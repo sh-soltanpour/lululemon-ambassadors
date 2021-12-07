@@ -41,7 +41,7 @@ def build_network(ambassadors: List[Dict]) -> nx.DiGraph:
         city = ambassador['city']
         for adj in ambassador.get('followers', []):
             if not g.has_node(adj):
-                g.add_node(adj, viz={'color': {**colors[city], 'a': 1.0}}, bipartite=2)
+                g.add_node(adj, viz={'color': {**colors[city], 'a': 1.0}}, bipartite=2, city=city)
     for ambassador in ambassadors:
         handle = ambassador['instagram']
         city = ambassador['city']
@@ -103,6 +103,6 @@ def degree_distribution(g: nx.DiGraph):
 
 
 areas = extract('./ambassadors_lists')
-graph = build_network(areas['asia_1_ambassadors.json'])
+graph = build_network(areas['europe_ambassadors.json'])
 degree_distribution(graph)
-nx.write_gexf(graph, './network/vis/visualized.gexf')
+nx.write_gexf(graph, './network/vis/visualized_europe.gexf')
