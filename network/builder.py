@@ -3,6 +3,12 @@ from typing import List, Tuple, Dict
 import json
 import random
 import networkx as nx
+from networkx.algorithms import smallworld
+from networkx.algorithms.core import k_core
+from networkx.algorithms import richclub
+from networkx.algorithms.clique import find_cliques
+from networkx.algorithms.assortativity import degree_assortativity_coefficient
+
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
@@ -29,6 +35,8 @@ def build_network(ambassadors: List[Dict]) -> nx.DiGraph:
     for ambassador in ambassadors:
         city = ambassador['city']
         handle = ambassador['instagram']
+        if handle is None:
+            continue
         colors[city] = {
             'r': random.randint(0, 255),
             'g': random.randint(0, 255),
@@ -36,7 +44,7 @@ def build_network(ambassadors: List[Dict]) -> nx.DiGraph:
         }
         g.add_node(handle, viz={'color': {**colors[city], 'a': 1.0}}, bipartite=1)
         main_handles.append(handle)
-    print(colors)
+    # print(colors)
     for ambassador in ambassadors:
         city = ambassador['city']
         for adj in ambassador.get('followers', []):
@@ -101,8 +109,41 @@ def degree_distribution(g: nx.DiGraph):
     # Show the plot
     plt.show()
 
-
+areas_lists = ['asia_1', 'asia_2', 'australia', 'canada', 'europe', 'global', 'korea', 'uk']
 areas = extract('./ambassadors_lists')
-graph = build_network(areas['europe_ambassadors.json'])
-degree_distribution(graph)
-nx.write_gexf(graph, './network/vis/visualized_europe.gexf')
+for area in areas_lists:
+    print(f"Area: {area}")
+    graph = build_network(areas[f'{area}_ambassadors.json'])
+
+    print("Getting k_Core")
+    k_core_graph = k_core(graph, k=2)
+
+    print("Enumerate degree assortativity coefficient")
+    print(degree_assortativity_coefficient(k_core_graph))
+    print("----------------")
+
+
+
+
+def count_cliques(areas_lists):
+    for area in areas_lists:
+        print(f"Area: {area}")
+        graph = build_network(areas[f'{area}_ambassadors.json'])
+
+        print("Getting k_Core")
+        k_core_graph = k_core(graph, k=2)
+
+        print("K core undirected")
+        k_core_undirected = nx.DiGraph.to_undirected(k_core_graph)
+
+        print("Enumerate all cliques")
+        print(len(list(find_cliques(k_core_undirected))))
+
+    print("----------------")
+
+
+# print("Smallworld")
+# print(smallworld.omega(k_core_undirected))
+
+# degree_distribution(graph)
+#nx.write_gexf(graph, './network/vis/visualized_asia_2.gexf')
