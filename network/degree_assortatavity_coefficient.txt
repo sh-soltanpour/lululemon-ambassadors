@@ -1,0 +1,52 @@
+Area: asia_1
+{'Hong Kong & Macau': {'r': 25, 'g': 75, 'b': 233}, 'Malaysia': {'r': 31, 'g': 39, 'b': 195}}
+Getting k_Core
+K core undirected
+Enumerate degree assortativity coefficient
+Traceback (most recent call last):
+  File "/Users/shahryar/Desktop/lululemon-ambassadors/network/builder.py", line 125, in <module>
+    print(len(list(degree_assortativity_coefficient(k_core_undirected))))
+TypeError: 'numpy.float64' object is not iterable
+(.venv) ➜  lululemon-ambassadors git:(master) ✗ python network/builder.py
+Area: asia_1
+{'Hong Kong & Macau': {'r': 220, 'g': 44, 'b': 86}, 'Malaysia': {'r': 2, 'g': 24, 'b': 45}}
+Getting k_Core
+Enumerate degree assortativity coefficient
+/Users/shahryar/Desktop/lululemon-ambassadors/.venv/lib/python3.9/site-packages/networkx/algorithms/assortativity/mixing.py:208: RuntimeWarning: invalid value encountered in true_divide
+  a = a / a.sum()
+nan
+Area: asia_2
+{'Taiwan': {'r': 48, 'g': 130, 'b': 123}, 'Singapore': {'r': 154, 'g': 145, 'b': 174}}
+Getting k_Core
+Enumerate degree assortativity coefficient
+-0.01025982287120275
+Area: australia
+{'victoria': {'r': 210, 'g': 56, 'b': 77}, 'australian-capital-territory': {'r': 206, 'g': 254, 'b': 47}, 'western-australia': {'r': 249, 'g': 101, 'b': 57}, 'new-south-wales': {'r': 222, 'g': 82, 'b': 14}, 'tasmania': {'r': 72, 'g': 70, 'b': 218}, 'queensland': {'r': 129, 'g': 74, 'b': 172}, 'new-zealand': {'r': 10, 'g': 207, 'b': 234}}
+Getting k_Core
+Enumerate degree assortativity coefficient
+-0.1078238425607722
+Area: canada
+{'St-Lazare': {'r': 149, 'g': 213, 'b': 106}, 'Scarborough': {'r': 28, 'g': 244, 'b': 247}, 'Waterloo': {'r': 238, 'g': 108, 'b': 192}, 'Calgary': {'r': 217, 'g': 254, 'b': 180}, 'Saskatoon': {'r': 81, 'g': 56, 'b': 118}, 'Toronto': {'r': 75, 'g': 228, 'b': 151}, 'LaSalle': {'r': 32, 'g': 99, 'b': 146}, 'Prévost': {'r': 93, 'g': 31, 'b': 152}, 'Montréal': {'r': 114, 'g': 138, 'b': 42}, 'regina': {'r': 67, 'g': 238, 'b': 7}, 'Edmonton': {'r': 108, 'g': 74, 'b': 77}, 'London': {'r': 182, 'g': 127, 'b': 119}, 'Ajax': {'r': 131, 'g': 219, 'b': 11}, 'Kitchener': {'r': 84, 'g': 141, 'b': 86}, 'Moncton': {'r': 245, 'g': 91, 'b': 231}, 'Victoria': {'r': 170, 'g': 105, 'b': 91}, 'Windsor': {'r': 123, 'g': 245, 'b': 73}, 'Newmarket': {'r': 215, 'g': 248, 'b': 160}, 'Langley': {'r': 232, 'g': 59, 'b': 36}, 'North Vancouver': {'r': 95, 'g': 140, 'b': 183}, 'Barrie': {'r': 236, 'g': 29, 'b': 98}, 'Ottawa': {'r': 34, 'g': 171, 'b': 142}, 'Kamloops': {'r': 33, 'g': 247, 'b': 161}, 'Skead': {'r': 18, 'g': 91, 'b': 75}, 'Montreal': {'r': 221, 'g': 52, 'b': 224}, 'Richmond': {'r': 103, 'g': 26, 'b': 47}, 'Whitby': {'r': 55, 'g': 196, 'b': 133}, 'Pointe-Claire': {'r': 90, 'g': 162, 'b': 97}, "St. John's": {'r': 156, 'g': 255, 'b': 69}, 'East York': {'r': 117, 'g': 75, 'b': 224}, 'Lively': {'r': 72, 'g': 176, 'b': 215}, 'Brossard': {'r': 101, 'g': 125, 'b': 35}, 'Surrey': {'r': 93, 'g': 158, 'b': 98}, 'Woodbridge': {'r': 204, 'g': 150, 'b': 0}, 'Vancouver': {'r': 195, 'g': 120, 'b': 121}, 'Gloucester': {'r': 39, 'g': 230, 'b': 235}, 'Lasalle': {'r': 169, 'g': 49, 'b': 207}, 'Paradise': {'r': 111, 'g': 28, 'b': 61}, 'West Kelowna': {'r': 26, 'g': 87, 'b': 103}, 'Whistler': {'r': 54, 'g': 72, 'b': 175}, 'Halifax': {'r': 125, 'g': 148, 'b': 55}, 'toronto': {'r': 106, 'g': 198, 'b': 110}, 'Mississauga': {'r': 142, 'g': 17, 'b': 179}, 'Grande Prairie': {'r': 129, 'g': 140, 'b': 163}, 'Pitt Meadows': {'r': 128, 'g': 134, 'b': 93}, 'Belleville': {'r': 21, 'g': 206, 'b': 59}, 'Moose Jaw': {'r': 238, 'g': 93, 'b': 90}, 'richmond': {'r': 201, 'g': 75, 'b': 50}, 'East Gwillimbury': {'r': 110, 'g': 215, 'b': 88}, 'Greenfield Park': {'r': 244, 'g': 187, 'b': 211}, 'Candiac': {'r': 123, 'g': 22, 'b': 195}, 'North York': {'r': 237, 'g': 157, 'b': 87}, 'Saint-Hippolyte': {'r': 182, 'g': 127, 'b': 224}, 'Winnipeg': {'r': 138, 'g': 158, 'b': 115}, 'Regina': {'r': 165, 'g': 116, 'b': 43}, 'Westmount': {'r': 126, 'g': 159, 'b': 113}, 'York': {'r': 161, 'g': 195, 'b': 75}, 'QC': {'r': 169, 'g': 34, 'b': 177}, 'Bolton': {'r': 184, 'g': 158, 'b': 104}, 'Quebec': {'r': 16, 'g': 37, 'b': 52}, 'Chelsea': {'r': 104, 'g': 156, 'b': 55}, 'Nepean': {'r': 156, 'g': 156, 'b': 145}, 'Burlington': {'r': 6, 'g': 110, 'b': 10}, 'Kingston': {'r': 146, 'g': 89, 'b': 157}, 'Sudbury': {'r': 230, 'g': 163, 'b': 145}, 'Ste-Geneviève': {'r': 146, 'g': 18, 'b': 203}, 'Nobleton': {'r': 8, 'g': 140, 'b': 59}, 'Etobicoke': {'r': 63, 'g': 141, 'b': 195}, 'Dundas': {'r': 156, 'g': 129, 'b': 243}, 'East Preston': {'r': 202, 'g': 174, 'b': 208}, 'Oakville': {'r': 94, 'g': 186, 'b': 243}, 'Vaudreuil': {'r': 145, 'g': 28, 'b': 113}, 'Renfrew': {'r': 24, 'g': 55, 'b': 169}, 'Ancaster': {'r': 249, 'g': 2, 'b': 176}, 'Hamilton': {'r': 33, 'g': 244, 'b': 212}, 'Kelowna': {'r': 34, 'g': 23, 'b': 113}, 'White Rock': {'r': 192, 'g': 10, 'b': 120}, 'Georgetown': {'r': 112, 'g': 84, 'b': 240}, 'Markham': {'r': 12, 'g': 59, 'b': 5}}
+Getting k_Core
+Enumerate degree assortativity coefficient
+-0.07117217541447375
+Area: europe
+{'BROWN THOMAS': {'r': 112, 'g': 10, 'b': 190}, 'ZURICH': {'r': 174, 'g': 245, 'b': 72}, 'STOCKHOLM': {'r': 246, 'g': 78, 'b': 61}, 'AMSTERDAM': {'r': 125, 'g': 188, 'b': 204}, 'OSLO': {'r': 104, 'g': 200, 'b': 62}}
+Getting k_Core
+Enumerate degree assortativity coefficient
+-0.23139725123253138
+Area: global
+{'Kapaa': {'r': 82, 'g': 182, 'b': 7}, 'Orlando': {'r': 104, 'g': 240, 'b': 116}, 'Haleiwa': {'r': 91, 'g': 117, 'b': 195}, 'Camden': {'r': 200, 'g': 144, 'b': 39}, 'Papeete': {'r': 114, 'g': 8, 'b': 175}, 'Boulder': {'r': 71, 'g': 47, 'b': 4}, 'Whistler': {'r': 138, 'g': 144, 'b': 211}, 'Saskatoon': {'r': 245, 'g': 111, 'b': 114}, 'London': {'r': 255, 'g': 248, 'b': 232}, 'Vancouver': {'r': 178, 'g': 22, 'b': 126}, 'Park City': {'r': 112, 'g': 142, 'b': 80}, 'Lawndale': {'r': 166, 'g': 108, 'b': 172}, 'Santa Monica': {'r': 95, 'g': 172, 'b': 91}, 'New York': {'r': 46, 'g': 40, 'b': 38}, 'Point Pleasant Beach': {'r': 118, 'g': 30, 'b': 32}, 'Trumbull': {'r': 94, 'g': 170, 'b': 227}, 'Calgary': {'r': 95, 'g': 70, 'b': 27}, 'Bronxville': {'r': 187, 'g': 251, 'b': 124}, 'Brooklyn': {'r': 134, 'g': 106, 'b': 99}, 'Flagstaff': {'r': 27, 'g': 75, 'b': 133}, 'Brooklin': {'r': 185, 'g': 196, 'b': 153}, 'Union City': {'r': 151, 'g': 90, 'b': 151}, 'Chicago': {'r': 30, 'g': 219, 'b': 135}, 'Huntington Beach': {'r': 150, 'g': 49, 'b': 113}, 'Oak Park': {'r': 86, 'g': 20, 'b': 24}, 'Virginia Water': {'r': 96, 'g': 69, 'b': 26}, 'Toronto': {'r': 22, 'g': 200, 'b': 25}, 'Laguna Niguel': {'r': 122, 'g': 243, 'b': 251}, 'Chennai': {'r': 203, 'g': 53, 'b': 165}, 'Westfield': {'r': 143, 'g': 215, 'b': 28}, 'Harrow': {'r': 29, 'g': 142, 'b': 53}, 'Mexico City': {'r': 185, 'g': 205, 'b': 193}, 'Victoria': {'r': 211, 'g': 25, 'b': 139}, 'Montpelier': {'r': 71, 'g': 95, 'b': 158}, 'Norwalk': {'r': 182, 'g': 112, 'b': 17}, 'Kalorama': {'r': 180, 'g': 176, 'b': 120}, 'Hermosa Beach': {'r': 20, 'g': 72, 'b': 144}, 'Paris': {'r': 155, 'g': 166, 'b': 95}, 'Redondo Beach': {'r': 220, 'g': 105, 'b': 220}}
+Getting k_Core
+Enumerate degree assortativity coefficient
+-0.1624621880969748
+Area: korea
+{'KOREA': {'r': 1, 'g': 143, 'b': 85}}
+Getting k_Core
+Enumerate degree assortativity coefficient
+-0.28124182567321465
+Area: uk
+{'LONDON': {'r': 173, 'g': 115, 'b': 72}, 'GLASGOW': {'r': 143, 'g': 194, 'b': 172}, 'EDINBURGH': {'r': 123, 'g': 67, 'b': 98}, 'MANCHESTER': {'r': 19, 'g': 66, 'b': 120}, 'MANCHESTER TRAFFORD': {'r': 209, 'g': 214, 'b': 136}, 'BICESTER': {'r': 38, 'g': 87, 'b': 72}, ' BATH ': {'r': 234, 'g': 86, 'b': 203}, 'BATH': {'r': 254, 'g': 246, 'b': 86}, 'GUILDFORD': {'r': 69, 'g': 102, 'b': 187}}
+Getting k_Core
+Enumerate degree assortativity coefficient
+-0.05464486900459766
