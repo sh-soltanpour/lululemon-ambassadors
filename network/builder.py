@@ -8,11 +8,17 @@ from networkx.algorithms.core import k_core
 from networkx.algorithms import richclub
 from networkx.algorithms.clique import find_cliques
 from networkx.algorithms.assortativity import degree_assortativity_coefficient
+from networkx.algorithms.components import number_connected_components, number_strongly_connected_components, \
+    is_strongly_connected, is_connected
+from networkx.algorithms.cluster import clustering, average_clustering
+from networkx.algorithms.shortest_paths.generic import average_shortest_path_length
+from networkx.algorithms.distance_measures import diameter
 
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-matplotlib.use( 'tkagg' )
+
+matplotlib.use('tkagg')
 AMBASSADORS_LIST = 'list.json'
 
 
@@ -69,10 +75,10 @@ def degree_distribution_log(g: nx.DiGraph):
     bin_edges = np.logspace(np.log10(kmin), np.log10(kmax), num=10)
     # histogram the data into these bins
     density, _ = np.histogram(degrees, bins=bin_edges, density=True)
-    fig = plt.figure(figsize=(6,4))
+    fig = plt.figure(figsize=(6, 4))
     # "x" should be midpoint (IN LOG SPACE) of each bin
     log_be = np.log10(bin_edges)
-    x = 10**((log_be[1:] + log_be[:-1])/2)
+    x = 10 ** ((log_be[1:] + log_be[:-1]) / 2)
     plt.loglog(x, density, marker='o', linestyle='none')
     plt.xlabel(r"degree $k$", fontsize=16)
     plt.ylabel(r"$P(k)$", fontsize=16)
@@ -85,6 +91,7 @@ def degree_distribution_log(g: nx.DiGraph):
     # Show the plot
     plt.show()
 
+
 def degree_distribution(g: nx.DiGraph):
     degrees = [g.degree(node) for node in g]
     kmin = 1
@@ -93,10 +100,10 @@ def degree_distribution(g: nx.DiGraph):
     bin_edges = np.linspace(kmin, kmax, num=10)
     # histogram the data into these bins
     density, _ = np.histogram(degrees, bins=bin_edges, density=True)
-    fig = plt.figure(figsize=(6,4))
+    fig = plt.figure(figsize=(6, 4))
     # "x" should be midpoint (IN LOG SPACE) of each bin
     log_be = np.log10(bin_edges)
-    x = 10**((log_be[1:] + log_be[:-1])/2)
+    x = 10 ** ((log_be[1:] + log_be[:-1]) / 2)
     plt.plot(x, density, marker='o', linestyle='none')
     plt.xlabel(r"degree $k$", fontsize=16)
     plt.ylabel(r"$P(k)$", fontsize=16)
@@ -109,20 +116,27 @@ def degree_distribution(g: nx.DiGraph):
     # Show the plot
     plt.show()
 
+
 areas_lists = ['asia_1', 'asia_2', 'australia', 'canada', 'europe', 'global', 'korea', 'uk']
 areas = extract('./ambassadors_lists')
+
 for area in areas_lists:
     print(f"Area: {area}")
     graph = build_network(areas[f'{area}_ambassadors.json'])
 
-    print("Getting k_Core")
-    k_core_graph = k_core(graph, k=2)
+    undirected_graph = nx.DiGraph.to_undirected(graph)
+    connected = is_connected(undirected_graph)
 
-    print("Enumerate degree assortativity coefficient")
-    print(degree_assortativity_coefficient(k_core_graph))
-    print("----------------")
-
-
+    print(f"Number of Nodes {graph.number_of_nodes()}")
+    print(f"Number of Edges {graph.number_of_edges()}")
+    print(f"Number of Connected Components {number_connected_components(undirected_graph)}")
+    print(f"Number of strongly connected components {number_strongly_connected_components(graph)}")
+    print(f"Average clustering coefficient {average_clustering(graph)}")
+    print(f"Undirected graph is connected {connected}")
+    # if connected:
+    #     print(f"Diameter {diameter(undirected_graph)}")
+    if connected:
+        print(f"Average shortest path length {average_shortest_path_length(undirected_graph)}")
 
 
 def count_cliques(areas_lists):
@@ -141,9 +155,8 @@ def count_cliques(areas_lists):
 
     print("----------------")
 
-
 # print("Smallworld")
 # print(smallworld.omega(k_core_undirected))
 
 # degree_distribution(graph)
-#nx.write_gexf(graph, './network/vis/visualized_asia_2.gexf')
+# nx.write_gexf(graph, './network/vis/visualized_asia_2.gexf')
