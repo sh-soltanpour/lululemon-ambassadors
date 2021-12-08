@@ -8,7 +8,8 @@ from networkx.algorithms.core import k_core
 from networkx.algorithms import richclub
 from networkx.algorithms.clique import find_cliques
 from networkx.algorithms.assortativity import degree_assortativity_coefficient
-
+from networkx.algorithms.wiener import wiener_index
+from networkx.algorithms.components import is_connected
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
@@ -109,21 +110,6 @@ def degree_distribution(g: nx.DiGraph):
     # Show the plot
     plt.show()
 
-areas_lists = ['asia_1', 'asia_2', 'australia', 'canada', 'europe', 'global', 'korea', 'uk']
-areas = extract('./ambassadors_lists')
-for area in areas_lists:
-    print(f"Area: {area}")
-    graph = build_network(areas[f'{area}_ambassadors.json'])
-
-    print("Getting k_Core")
-    k_core_graph = k_core(graph, k=2)
-
-    print("Enumerate degree assortativity coefficient")
-    print(degree_assortativity_coefficient(k_core_graph))
-    print("----------------")
-
-
-
 
 def count_cliques(areas_lists):
     for area in areas_lists:
@@ -137,13 +123,39 @@ def count_cliques(areas_lists):
         k_core_undirected = nx.DiGraph.to_undirected(k_core_graph)
 
         print("Enumerate all cliques")
-        print(len(list(find_cliques(k_core_undirected))))
+        cliques = list(find_cliques(k_core_undirected))
+        print(len(cliques))
+        print([len(cliques[i]) for i in range(10)])
 
-    print("----------------")
+        print("----------------")
 
+def assortativity(areas_lists):
+    for area in areas_lists:
+        print(f"Area: {area}")
+        graph = build_network(areas[f'{area}_ambassadors.json'])
 
-# print("Smallworld")
-# print(smallworld.omega(k_core_undirected))
+        print("Getting k_Core")
+        k_core_graph = k_core(graph, k=2)
 
-# degree_distribution(graph)
-#nx.write_gexf(graph, './network/vis/visualized_asia_2.gexf')
+        print("Enumerate degree assortativity coefficient")
+        print(degree_assortativity_coefficient(k_core_graph))
+        print("----------------")
+
+def find_wiener_index(areas_lists):
+    for area in areas_lists:
+        print(f"Area: {area}")
+        graph = build_network(areas[f'{area}_ambassadors.json'])
+
+        print("Getting k_Core")
+        k_core_graph = k_core(graph, k=2)
+
+        print("K core undirected")
+        k_core_undirected = nx.DiGraph.to_undirected(k_core_graph)
+
+        print("Wiener Index")
+        print(wiener_index(k_core_undirected))
+        print("----------------")
+
+areas_lists = ['asia_1', 'asia_2', 'australia', 'canada', 'europe', 'global', 'korea', 'uk']
+areas = extract('./ambassadors_lists')
+find_wiener_index(areas_lists)
