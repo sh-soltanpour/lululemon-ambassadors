@@ -1,17 +1,20 @@
 import os
+import time
+from datetime import datetime
 from typing import List, Tuple, Dict
 import json
 import random
 import networkx as nx
-from networkx.algorithms import smallworld
 from networkx.algorithms.core import k_core
-from networkx.algorithms import richclub
 from networkx.algorithms.clique import find_cliques
 from networkx.algorithms.assortativity import degree_assortativity_coefficient
 from networkx.algorithms.components import number_connected_components, number_strongly_connected_components, \
     is_strongly_connected, is_connected
 from networkx.algorithms.cluster import clustering, average_clustering
 from networkx.algorithms.wiener import wiener_index
+
+import networkx as nx
+
 from networkx.algorithms.shortest_paths.generic import average_shortest_path_length
 from networkx.algorithms.distance_measures import diameter
 
@@ -118,28 +121,6 @@ def degree_distribution(g: nx.DiGraph):
     plt.show()
 
 
-areas_lists = ['asia_1', 'asia_2', 'australia', 'canada', 'europe', 'global', 'korea', 'uk']
-areas = extract('./ambassadors_lists')
-
-for area in areas_lists:
-    print(f"Area: {area}")
-    graph = build_network(areas[f'{area}_ambassadors.json'])
-
-    undirected_graph = nx.DiGraph.to_undirected(graph)
-    connected = is_connected(undirected_graph)
-
-    print(f"Number of Nodes {graph.number_of_nodes()}")
-    print(f"Number of Edges {graph.number_of_edges()}")
-    print(f"Number of Connected Components {number_connected_components(undirected_graph)}")
-    print(f"Number of strongly connected components {number_strongly_connected_components(graph)}")
-    print(f"Average clustering coefficient {average_clustering(graph)}")
-    print(f"Undirected graph is connected {connected}")
-    # if connected:
-    #     print(f"Diameter {diameter(undirected_graph)}")
-    if connected:
-        print(f"Average shortest path length {average_shortest_path_length(undirected_graph)}")
-
-
 def count_cliques(areas_lists):
     for area in areas_lists:
         print(f"Area: {area}")
@@ -186,8 +167,47 @@ def assortativity(areas_lists):
         print("----------------")
 
 
-# print("Smallworld")
-# print(smallworld.omega(k_core_undirected))
 
-# degree_distribution(graph)
-#nx.write_gexf(graph, './network/vis/visualized_asia_2.gexf')
+areas_lists = ['asia_1', 'asia_2', 'australia', 'europe', 'korea', 'uk', 'global', 'canada']
+areas = extract('./ambassadors_lists')
+
+
+def get_statistics(graph: nx.DiGraph):
+    graph = nx.DiGraph.to_undirected(graph)
+    graph = nx.k_core(graph, k=2)
+    connected = nx.is_connected(graph)
+    stat = {}
+    stat['nodes'] = graph.number_of_nodes()
+    stat['edges'] = graph.number_of_edges()
+    stat['degrees'] = [d[1] for d in graph.degree()]
+    stat['cc'] = nx.number_connected_components(graph)
+    stat['average_clustering'] = average_clustering(graph)
+    stat['average_shortest_path'] = average_shortest_path_length(graph)
+    if connected:
+        stat['diameter'] = diameter(graph)
+    return stat
+
+
+def create_null_models(areas_lists):
+    RANDOM_GENERATION_NUM = 10
+    for area in areas_lists:
+        network_name = f'{area}_ambassadors.json'
+        statistics_list = []
+        graph = build_network(areas[network_name])
+        graph = nx.DiGraph.to_undirected(graph)
+        graph = nx.k_core(graph, k=2)
+        nodes = graph.number_of_nodes()
+        edges = graph.number_of_edges()
+        degrees = [d[1] for d in graph.degree()]
+        avg_degree = int(sum(degrees) / len(degrees))
+        for i in range(RANDOM_GENERATION_NUM):
+            rg = nx.barabasi_albert_graph(nodes, avg_degree)
+            print("STATS")
+            stats = get_statistics(rg)
+            statistics_list.append(stats)
+        with open(f"{network_name}_stats_random.json", 'w') as f:
+            json.dump(statistics_list, f)
+        print(f"{area} FIN")
+
+
+create_null_models(areas_lists)
