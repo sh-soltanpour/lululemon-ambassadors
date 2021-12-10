@@ -1,6 +1,6 @@
 import json
 
-with open('./lululemon_site_ambassadors/usa_canada_ambassadors.json') as f:
+with open('../lululemon_site_ambassadors/usa_canada_ambassadors.json') as f:
     data = json.load(f)
 
 canadians = []

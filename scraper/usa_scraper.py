@@ -1,3 +1,6 @@
+"""
+This file is the scraper for usa region. Retrieves ambassadors, their city and instagram account.
+"""
 import os
 import requests
 import json

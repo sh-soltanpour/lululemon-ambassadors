@@ -1,3 +1,10 @@
+"""
+Deprecated.
+This file was used for getting followers data using instapy, but since we have found new approaches, we didn't use
+this. Use get_followers.py instead.
+
+"""
+
 from instapy import InstaPy
 import pandas as pd
 from config import crawler_username, crawler_password

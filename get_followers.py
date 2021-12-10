@@ -1,3 +1,9 @@
+"""
+When you run this file, you should pass the address of the ambassadors region to it, and it will populate that file
+with followers of the ambassador. Example:
+python get_followers.py ambassador_lists/canada_ambassadors.json
+"""
+
 import json
 import time
 
@@ -79,8 +85,6 @@ for record in data:
         print("Retrieved Followers")
     except:
         pass
-        # with open(ambassadors_file, 'w') as outfile:
-        #     json.dump(data, outfile)
 
 with open(ambassadors_file, 'w') as outfile:
     json.dump(data, outfile)
