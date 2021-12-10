@@ -1,19 +1,26 @@
+"""
+This file is used to create null model graphs and calculate stats such as clustering, shortest path, wiener index
+for graphs
+"""
+
 import json
+
 import networkx as nx
-from networkx.algorithms.core import k_core
-from networkx.algorithms.clique import find_cliques
 from networkx.algorithms.assortativity import degree_assortativity_coefficient
-from networkx.algorithms.components import number_connected_components, number_strongly_connected_components, \
-    is_strongly_connected, is_connected
-from networkx.algorithms.shortest_paths.generic import average_shortest_path_length
+from networkx.algorithms.clique import find_cliques
+from networkx.algorithms.cluster import average_clustering
+from networkx.algorithms.core import k_core
 from networkx.algorithms.distance_measures import diameter
-from networkx.algorithms.cluster import clustering, average_clustering
+from networkx.algorithms.shortest_paths.generic import average_shortest_path_length
 from networkx.algorithms.wiener import wiener_index
 
 from network.builder import build_network, extract
 
 
 def count_cliques(areas_lists):
+    """
+    Counts number of cliques inside regions' graphs
+    """
     for area in areas_lists:
         print(f"Area: {area}")
         graph = build_network(areas[f'{area}_ambassadors.json'])
@@ -33,6 +40,9 @@ def count_cliques(areas_lists):
 
 
 def find_wiener_index(areas_lists):
+    """
+    Calculates wiener index of regions' graphs
+    """
     for area in areas_lists:
         print(f"Area: {area}")
         graph = build_network(areas[f'{area}_ambassadors.json'])
@@ -49,6 +59,9 @@ def find_wiener_index(areas_lists):
 
 
 def assortativity(areas_lists):
+    """
+    Calculates assortativity of regions' graphs
+    """
     for area in areas_lists:
         print(f"Area: {area}")
         graph = build_network(areas[f'{area}_ambassadors.json'])
@@ -82,6 +95,9 @@ def get_statistics(graph: nx.DiGraph):
 
 
 def create_null_models(areas_lists):
+    """
+    Creates 10 null model graphs for each region using barabasi_albert model
+    """
     RANDOM_GENERATION_NUM = 10
     for area in areas_lists:
         network_name = f'{area}_ambassadors.json'
