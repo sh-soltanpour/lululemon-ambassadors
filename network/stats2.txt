@@ -1,0 +1,56 @@
+Area: asia_1
+Number of Nodes 110021
+Number of Edges 118990
+Number of Connected Components 1
+Number of strongly connected components 109999
+Undirected graph is connected True
+-----------------
+Area: asia_2
+Number of Nodes 92220
+Number of Edges 97477
+Number of Connected Components 1
+Number of strongly connected components 92201
+Undirected graph is connected True
+-----------------
+Area: australia
+Number of Nodes 121168
+Number of Edges 126971
+Number of Connected Components 1
+Number of strongly connected components 121146
+Undirected graph is connected True
+-----------------
+Area: canada
+Number of Nodes 381942
+Number of Edges 428148
+Number of Connected Components 1
+Number of strongly connected components 381808
+Undirected graph is connected True
+-----------------
+Area: europe
+Number of Nodes 99520
+Number of Edges 102014
+Number of Connected Components 1
+Number of strongly connected components 99509
+Undirected graph is connected True
+-----------------
+Area: global
+Number of Nodes 386153
+Number of Edges 419674
+Number of Connected Components 1
+Number of strongly connected components 386123
+Undirected graph is connected True
+-----------------
+Area: korea
+Number of Nodes 124385
+Number of Edges 143480
+Number of Connected Components 1
+Number of strongly connected components 124350
+Undirected graph is connected True
+-----------------
+Area: uk
+Number of Nodes 154185
+Number of Edges 161847
+Number of Connected Components 1
+Number of strongly connected components 154161
+Undirected graph is connected True
+-----------------

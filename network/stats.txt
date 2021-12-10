@@ -1,0 +1,14 @@
+Area: asia_1
+Number of Nodes 110021
+Number of Edges 118990
+Number of Connected Components 3
+Number of strongly connected components 109999
+Average clustering coefficient 0.03834373981065854
+Undirected graph is connected False
+Area: asia_2
+Number of Nodes 92220
+Number of Edges 97477
+Number of Connected Components 1
+Number of strongly connected components 92201
+Average clustering coefficient 0.023364922363775256
+Undirected graph is connected True
